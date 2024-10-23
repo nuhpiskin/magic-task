@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!-- Copyright (c) 2024 Magic Tech Ltd -->
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_margin="32dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="8dp"
+        android:background="@android:color/white"
+        android:padding="8dp"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="4dp"
+                android:textStyle="bold"
+                android:text="@string/label_rep_count"/>
+
+            <TextView
+                android:id="@+id/text_view_rep_count"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textStyle="bold"
+                android:text="0"/>
+
+        </LinearLayout>
+
+        <ProgressBar
+            style="@android:style/Widget.ProgressBar.Horizontal"
+            android:id="@+id/rep_progress"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:progress="50"/>
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/text_view_feedback"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="48dp"
+        android:layout_alignParentTop="true"
+        android:textAlignment="center"
+        android:textSize="12pt"
+        android:textStyle="bold"
+        android:textColor="@android:color/holo_green_dark"
+        tools:text="This is some exercise feedback"/>
+
+</RelativeLayout>

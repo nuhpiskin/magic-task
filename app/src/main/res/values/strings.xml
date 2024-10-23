@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Magic CV</string>
+
+    <string name="alt_bottom_sheet_chevron">Bottom sheet expandable indicator</string>
+
+    <string name="alt_bottom_sheet_max_results_button_minus">Decreasing
+        maximum pose results button</string>
+    <string name="alt_bottom_sheet_max_results_button_plus">Increasing
+        maximum pose results button</string>
+    <string name="alt_bottom_sheet_threshold_button_minus">Decreasing
+        threshold of pose detect results button</string>
+    <string name="alt_bottom_sheet_threshold_button_plus">Increasing
+        threshold of pose detect results button</string>
+    <string name="menu_camera">Camera</string>
+    <string name="menu_gallery">Gallery</string>
+    <string name="tv_gallery_placeholder">Click + to add an image or a video
+        to begin running the pose landmarker.</string>
+
+    <string name="label_inference_time">Inference Time</string>
+    <string name="label_fps">Frames per Second</string>
+    <string name="label_pose_detection_confidence_threshold">Detection
+        Threshold</string>
+    <string name="label_pose_tracking_confidence_threshold">Tracking
+        Threshold</string>
+    <string name="label_pose_presence_confidence_threshold">Presence
+        Threshold</string>
+    <string name="label_num_poses">Number of Poses</string>
+    <string name="label_delegate">Delegate</string>
+    <string name="label_models">Model</string>
+    <string name="label_rep_count">Rep count:</string>
+
+    <string-array name="delegate_spinner_titles">
+        <item>CPU</item>
+        <item>GPU</item>
+    </string-array>
+
+    <string-array name="models_spinner_titles">
+        <item>Pose Landmarker Full</item>
+        <item>Pose Landmarker Lite</item>
+        <item>Pose Landmarker Heavy</item>
+    </string-array>
+</resources>
