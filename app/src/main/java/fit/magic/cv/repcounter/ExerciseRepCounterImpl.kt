@@ -15,7 +15,7 @@ enum class Posture {
 data class Landmark(val x: Float, val y: Float, val z: Float)
 
 class ExerciseRepCounterImpl : ExerciseRepCounter() {
-    // Predefined angles for knee-down posture
+    // Predefined angles for knee-down posture normalized with 360
     private val leftKneeDownAngles = listOf(0.25, 0.25, 0.25, 0.5)
     private val rightKneeDownAngles = listOf(0.25, 0.5, 0.25, 0.25)
 
@@ -72,7 +72,7 @@ class ExerciseRepCounterImpl : ExerciseRepCounter() {
                         sendProgressUpdate(smoothedProgress.toFloat())
 
                         // Update current posture based on angles
-                        updatePosture(cosineSimLeftSide, cosineSimRightSide, progressDiff)
+                        updatePosture(cosineSimLeftSide, cosineSimRightSide, smoothedProgress)
                     } else {
                         Log.e("ERROR", "Index out of bounds for worldLandmarks size: ${worldLandmarks.size}")
                     }
@@ -89,17 +89,17 @@ class ExerciseRepCounterImpl : ExerciseRepCounter() {
     private fun updatePosture(cosineSimLeft: Double, cosineSimRight: Double, smoothedProgress: Double) {
         when {
             // Transition to right step
-            cosineSimRight > 0.99 && currentPosture == Posture.LeftStep && smoothedProgress > 0.99 -> {
+            cosineSimRight > 0.985 && currentPosture == Posture.LeftStep && smoothedProgress > 0.99 -> {
                 incrementRepCount()
                 currentPosture = Posture.RightStep
             }
             // Transition to left step
-            cosineSimLeft > 0.99 && currentPosture == Posture.RightStep && smoothedProgress > 0.99 -> {
+            cosineSimLeft > 0.985 && currentPosture == Posture.RightStep && smoothedProgress > 0.99 -> {
                 incrementRepCount()
                 currentPosture = Posture.LeftStep
             }
             // Start stepping
-            abs(cosineSimLeft - cosineSimRight) > 0.05 && currentPosture == Posture.Stand -> {
+            abs(cosineSimLeft - cosineSimRight) > 0.07 && currentPosture == Posture.Stand -> {
                 currentPosture = if (cosineSimRight > cosineSimLeft) Posture.LeftStep else Posture.RightStep
             }
             // Return to standing posture
