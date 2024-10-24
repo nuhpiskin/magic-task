@@ -25,6 +25,8 @@ class ExerciseRepCounterImpl : ExerciseRepCounter() {
 
     private var currentPosture = Posture.Stand
 
+    var counter: Int = 0
+
     override fun setResults(resultBundle: PoseLandmarkerHelper.ResultBundle) {
 
         // Check if results are available
@@ -100,7 +102,13 @@ class ExerciseRepCounterImpl : ExerciseRepCounter() {
             }
             // Start stepping
             abs(cosineSimLeft - cosineSimRight) > 0.07 && currentPosture == Posture.Stand -> {
-                currentPosture = if (cosineSimRight > cosineSimLeft) Posture.LeftStep else Posture.RightStep
+
+                if (counter == 3) {
+                    currentPosture = if (cosineSimRight > cosineSimLeft) Posture.LeftStep else Posture.RightStep
+                    counter = 0
+                } else {
+                    counter++
+                }
             }
             // Return to standing posture
             cosineSimLeft < 0.96 && cosineSimRight < 0.96 && currentPosture != Posture.Stand -> {
